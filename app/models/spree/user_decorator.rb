@@ -33,8 +33,6 @@ Spree::User.class_eval do
     end
   end
 
-  private
-
   def user_address(user,address)
     return [user.id, user.email, address.firstname, address.lastname, address.address1, address.state.present? ? address.state.name : '', address.country.present? ? address.country.name : '', address.phone, address.accept_terms_and_conditions, address.accept_comunications ]
   end
