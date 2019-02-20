@@ -4,7 +4,7 @@ Spree::User.class_eval do
       csv << %w{id email name lastname address state country phone accept_terms_and_conditions accept_comunications }
       all.each do |u|
       	if u.ship_address.present?
-          csv << user_address(u,u.ship_address)
+          csv << [u.id, u.email, u.ship_address.firstname, u.ship_address.lastname, u.ship_address.address1, u.ship_address.state.present? ? u.ship_address.state.name : '', u.ship_address.country.present? ? u.ship_address.country.name : '', u.ship_address.phone, u.ship_address.accept_terms_and_conditions, u.ship_address.accept_comunications ]
       	else
       		csv << [u.id, u.email,'','','','','','','']
       	end
@@ -32,6 +32,8 @@ Spree::User.class_eval do
       end
     end
   end
+
+  private
 
   def user_address(user,address)
     return [user.id, user.email, address.firstname, address.lastname, address.address1, address.state.present? ? address.state.name : '', address.country.present? ? address.country.name : '', address.phone, address.accept_terms_and_conditions, address.accept_comunications ]
