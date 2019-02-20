@@ -1,0 +1,1 @@
+Spree::PermittedAttributes.address_attributes << [:accept_terms_and_conditions, :accept_comunications]

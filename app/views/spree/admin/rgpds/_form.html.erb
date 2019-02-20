@@ -1,0 +1,35 @@
+<div class="container">
+  <div data-hook="admin_rgpd_form_fields" class="row">
+    <div class="col-md-12">
+      <div id="link_to_terms_and_conditions" data-hook="link_to_terms_and_conditions" class="field">
+        <%= label_tag :terms_and_conditions_text, Spree.t(:terms_and_conditions_text) %>
+        <%= text_field :rgpd, :terms_and_conditions_text, :class => 'fullwidth' %>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div id="link_to_terms_and_conditions" data-hook="link_to_terms_and_conditions" class="field">
+        <%= label_tag :link_to_terms_and_conditions, Spree.t(:link_to_terms_and_conditions) %>
+        <%= text_field :rgpd, :link_to_terms_and_conditions, :class => 'fullwidth' %>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div id="link_to_terms_and_conditions" data-hook="link_to_terms_and_conditions" class="field">
+        <%= label_tag :link_text, Spree.t(:link_text) %>
+        <%= text_field :rgpd, :link_text, :class => 'fullwidth', placeholder: Spree.t(:example_link_text) %>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div id="accept_comunications_text" data-hook="accept_comunications_text" class="field">
+        <%= label_tag :accept_comunications_text, Spree.t(:accept_comunications_text) %>
+        <%= text_field :rgpd, :accept_comunications_text, :class => 'fullwidth' %>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div data-hook="store_select" class="field">
+        <%= f.label :store %>
+        <div class="clear"></div>
+        <%= collection_select(:rgpd, :store_id, Spree::Store.all, :id, :name, {}, {:class => 'select2 fullwidth'}) %>
+      </div>
+    </div>
+  </div>
+</div>

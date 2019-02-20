@@ -1,0 +1,20 @@
+<%= render 'spree/admin/shared/general_tabs' %>
+
+<% admin_breadcrumb(Spree.t(:settings)) %>
+<% admin_breadcrumb(Spree.t(:general_settings)) %>
+<% admin_breadcrumb(Spree.t(:configuration_rgpd)) %>
+
+<% content_for :page_actions do %>
+	<li>
+    <%= button_link_to Spree.t(:back_to_rgpd_list),  spree.admin_rgpds_path, :id => 'admin_edit_rgpd_link' %>
+  </li>
+<% end %>
+
+<%= render :partial => 'spree/shared/error_messages', :locals => { :target => @rgpd } %>
+
+<%= form_for [:admin, @rgpd] do |f| %>
+  <fieldset class="no-border-top">
+    <%= render :partial => 'form', :locals => { :f => f } %>
+    <%= render :partial => 'spree/admin/shared/new_resource_links' %>
+  </fieldset>
+<% end %>

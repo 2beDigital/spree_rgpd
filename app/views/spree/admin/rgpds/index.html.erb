@@ -1,0 +1,62 @@
+<%= render 'spree/admin/shared/general_tabs' %>
+
+<% admin_breadcrumb(Spree.t(:settings)) %>
+<% admin_breadcrumb(Spree.t(:general_settings)) %>
+<% admin_breadcrumb(Spree.t(:configuration_rgpd)) %>
+
+<% content_for :page_actions do %>
+  <% if can?(:create, Spree::Rgpd) %>
+    <% if @rgpd.present? %>
+      <li>
+        <%= button_link_to Spree.t(:configuration_rgpd), edit_object_url(@rgpd), :id => 'admin_edit_rgpd_link' %>
+      </li>
+    <% else %>
+      <li>
+        <%= button_link_to Spree.t(:configuration_rgpd), new_object_url, :id => 'admin_new_rgpd_link' %>
+      </li>
+    <% end %>
+  <% end %>
+<% end %>
+
+<% if @rgpd.present? %>
+  <table class="index">
+    <colgroup>
+      <col style="width: 35%">
+      <col style="width: 10%">
+      <col style="width: 35%">
+      <col style="width: 10%">
+      <col style="width: 10%">
+    </colgroup>
+    <thead>
+      <tr data-hook="admin_rgpds_index_headers">
+        <th><%= Spree.t(:terms_and_conditions_text) %></th>
+        <th><%= Spree.t(:rgpd_link) %></th>
+        <th><%= Spree.t(:accept_comunications_text) %></th>
+        <th><%= Spree.t(:store) %></th>
+        <th class="actions"></th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr id="<%= spree_dom_id @rgpd %>" data-hook="admin_rgpds_index_rows" class="<%= cycle('odd', 'even')%>">
+          <td class="align-left"><%= @rgpd.terms_and_conditions_text %></td>
+          <td class="align-left"><%= link_to @rgpd.link_text,  @rgpd.link_to_terms_and_conditions %></td>
+          <td class="align-left"><%= @rgpd.accept_comunications_text %></td>
+          <td class="align-left"><%= @rgpd.store.name %></td>
+          <td class="actions">
+            <% if can?(:update, @rgpd) %>
+              <%= link_to_edit @rgpd, :no_text => true %>
+            <% end %>
+            <% if can?(:destroy, @rgpd) %>
+              <%= link_to_delete @rgpd, :no_text => true %>
+            <% end %>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+<% else %>
+  <div class="no-objects-found">
+    <%= render 'spree/admin/shared/no_objects_found',
+                 resource: Spree::Rgpd,
+                 new_resource_url: new_object_url %>
+  </div>
+<% end %>

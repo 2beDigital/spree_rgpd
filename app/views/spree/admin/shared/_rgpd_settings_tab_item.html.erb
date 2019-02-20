@@ -1,0 +1,3 @@
+<% if can?(:display, Spree::Rgpd) %>
+  <%= settings_tab_item plural_resource_name(Spree::Rgpd), admin_rgpds_path %>
+<% end %>

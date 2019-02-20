@@ -1,0 +1,11 @@
+<% if current_store.rgpd.present? %>
+	<p class="field" id=<%="#{address_id}accept_terms_and_conditions" %>>
+	  <%= form.label :accept_terms_and_conditions, current_store.rgpd.terms_and_conditions_text %>
+	  <span><a href="<%= current_store.rgpd.link_to_terms_and_conditions %>"><%= current_store.rgpd.link_text %></a></span><span class="required">*</span>
+	  <%= form.check_box :accept_terms_and_conditions, class: 'required', style: "width:auto" %>
+	</p>
+	<p class="field" id=<%="#{address_id}accept_comunications" %>>
+		<%= form.label :accept_comunications, current_store.rgpd.accept_comunications_text %>
+		<%= form.check_box :accept_comunications , style: "width:auto" %>
+	</p>
+<% end %>

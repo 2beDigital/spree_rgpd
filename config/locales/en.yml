@@ -1,0 +1,15 @@
+en:
+  spree:
+    configuration_rgpd: "Rgpd settings"
+    terms_and_conditions_text: Text to show in accept terms and conditions
+    link_to_terms_and_conditions: Link to terms and conditions
+    accept_comunications_text: Text to show in accept sending of communications
+    rgpd_link: Link
+    back_to_rgpd_list: Go back
+    admin_accept_terms_and_conditions: Did the client accept terms and conditions?
+    admin_accept_comunications: Did the client accept receiving communications?
+    link_text: Text of link
+    example_link_text: "Ej: Show terms and conditions"
+    export_users_data_to_csv: Export users data
+    export_user_data_to_csv: Export my data
+    delete_account: Delete my account
