@@ -23,9 +23,9 @@
     <colgroup>
       <col style="width: 35%">
       <col style="width: 10%">
-      <col style="width: 35%">
+      <col style="width: 30%">
       <col style="width: 10%">
-      <col style="width: 10%">
+      <col style="width: 15%">
     </colgroup>
     <thead>
       <tr data-hook="admin_rgpds_index_headers">
@@ -49,6 +49,8 @@
             <% if can?(:destroy, @rgpd) %>
               <%= link_to_delete @rgpd, :no_text => true %>
             <% end %>
+            <%= link_to '', admin_translations_path('rgpds', @rgpd.id),
+              class: 'icon_link with-tip fa fa-flag no-text', title: Spree.t(:'i18n.translations') %>
           </td>
         </tr>
     </tbody>

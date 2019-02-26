@@ -9,14 +9,14 @@ class AddAndCreateNewFieldsForRgpd < SolidusSupport::Migration[4.2]
       t.timestamps
     end
 
-    add_column :spree_addresses, :accept_comunications, :boolean, default: false
-    add_column :spree_addresses, :accept_terms_and_conditions, :boolean, default: false
+    add_column :spree_users, :accept_comunications, :boolean, default: false
+    add_column :spree_users, :accept_terms_and_conditions, :boolean, default: false
 
   end
 
   def self.down
     drop_table :spree_rgpds
-    remove_column :spree_addresses, :accept_comunications
-    remove_column :spree_addresses, :accept_terms_and_conditions
+    remove_column :spree_users, :accept_comunications
+    remove_column :spree_users, :accept_terms_and_conditions
   end
 end

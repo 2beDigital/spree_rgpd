@@ -4,9 +4,9 @@ Spree::User.class_eval do
       csv << %w{id email name lastname address state country phone accept_terms_and_conditions accept_comunications }
       all.each do |u|
       	if u.ship_address.present?
-          csv << [u.id, u.email, u.ship_address.firstname, u.ship_address.lastname, u.ship_address.address1, u.ship_address.state.present? ? u.ship_address.state.name : '', u.ship_address.country.present? ? u.ship_address.country.name : '', u.ship_address.phone, u.ship_address.accept_terms_and_conditions, u.ship_address.accept_comunications ]
+          csv << [u.id, u.email, u.ship_address.firstname, u.ship_address.lastname, u.ship_address.address1, u.ship_address.state.present? ? u.ship_address.state.name : '', u.ship_address.country.present? ? u.ship_address.country.name : '', u.ship_address.phone, u.accept_terms_and_conditions, u.accept_comunications ]
       	else
-      		csv << [u.id, u.email,'','','','','','','']
+      		csv << [u.id, u.email,'','','','','', u.accept_terms_and_conditions, u.accept_comunications ]
       	end
       end
     end
@@ -18,6 +18,8 @@ Spree::User.class_eval do
       if user.ship_address.present?
         csv << [Spree.t(:ship_address)]
         csv << user_address(user,user.ship_address)
+      else
+        csv << [user.id, user.email,'','','','','','', user.accept_terms_and_conditions, user.accept_comunications ]
       end
       if user.bill_address.present?
         csv << [Spree.t(:bill_address)]
@@ -36,6 +38,6 @@ Spree::User.class_eval do
   private
 
   def user_address(user,address)
-    return [user.id, user.email, address.firstname, address.lastname, address.address1, address.state.present? ? address.state.name : '', address.country.present? ? address.country.name : '', address.phone, address.accept_terms_and_conditions, address.accept_comunications ]
+    return [user.id, user.email, address.firstname, address.lastname, address.address1, address.state.present? ? address.state.name : '', address.country.present? ? address.country.name : '', address.phone, user.accept_terms_and_conditions, user.accept_comunications ]
   end
 end
