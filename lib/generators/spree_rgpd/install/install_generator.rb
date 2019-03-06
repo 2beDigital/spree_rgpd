@@ -1,4 +1,4 @@
-module SolidusRgpd
+module SpreeRgpd
   module Generators
     class InstallGenerator < Rails::Generators::Base
       argument :file_name, :type => :string, :desc => 'rails app_path', :default => '.'
@@ -6,11 +6,11 @@ module SolidusRgpd
       class_option :auto_run_migrations, :type => :boolean, :default => false
 
       def copy_initializer_file
-        template 'solidus_rgpd_settings.rb', "#{file_name}/config/initializers/solidus_rgpd_settings.rb"
+        template 'spree_rgpd_settings.rb', "#{file_name}/config/initializers/spree_rgpd_settings.rb"
       end      
 
       def add_migrations
-        run 'bundle exec rake railties:install:migrations FROM=solidus_rgpd'
+        run 'bundle exec rake railties:install:migrations FROM=spree_rgpd'
       end
 
       def run_migrations

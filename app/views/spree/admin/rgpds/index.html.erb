@@ -1,18 +1,14 @@
-<%= render 'spree/admin/shared/general_tabs' %>
-
-<% admin_breadcrumb(Spree.t(:settings)) %>
-<% admin_breadcrumb(Spree.t(:general_settings)) %>
-<% admin_breadcrumb(Spree.t(:configuration_rgpd)) %>
+<%= render :partial => 'spree/admin/shared/configuration_menu' %>
 
 <% content_for :page_actions do %>
-  <% if can?(:create, Spree::Rgpd) %>
+  <% if can? :admin, Spree::Rgpd %>
     <% if @rgpd.present? %>
       <li>
-        <%= button_link_to Spree.t(:configuration_rgpd), edit_object_url(@rgpd), :id => 'admin_edit_rgpd_link' %>
+        <%= button_link_to Spree.t(:configuration_rgpd), edit_object_url(@rgpd), :id => 'admin_edit_rgpd_link', icon: 'edit' %>
       </li>
     <% else %>
       <li>
-        <%= button_link_to Spree.t(:configuration_rgpd), new_object_url, :id => 'admin_new_rgpd_link' %>
+        <%= button_link_to Spree.t(:configuration_rgpd), new_object_url, :id => 'admin_new_rgpd_link', icon: 'plus' %>
       </li>
     <% end %>
   <% end %>
@@ -57,7 +53,7 @@
   </table>
 <% else %>
   <div class="no-objects-found">
-    <%= render 'spree/admin/shared/no_objects_found',
+    <%#= render 'spree/admin/shared/no_objects_found',
                  resource: Spree::Rgpd,
                  new_resource_url: new_object_url %>
   </div>

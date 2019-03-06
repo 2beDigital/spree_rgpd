@@ -1,9 +1,9 @@
-module SolidusRgpd  
+module SpreeRgpd  
   class Error < StandardError; end
   class Engine < Rails::Engine
     require 'spree/core'
     isolate_namespace Spree
-    engine_name 'solidus_rgpd'
+    engine_name 'spree_rgpd'
 
     # use rspec for tests
     config.generators do |g|

@@ -3,7 +3,7 @@ module Spree
 		belongs_to :store
 		translates :link_to_terms_and_conditions, :terms_and_conditions_text, :accept_comunications_text, :link_text, :fallbacks_for_empty_translations => true
 	  include Spree::RansackableAttributes
-	  include SolidusGlobalize::Translatable
+    include SpreeI18n::Translatable
 		def self.current(store = nil)
 			return if !store
 			if store.is_a?(Spree::Store)

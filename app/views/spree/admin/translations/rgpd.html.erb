@@ -1,14 +1,13 @@
-<%= render 'spree/admin/shared/general_tabs' %>
+<%= render :partial => 'spree/admin/shared/configuration_menu' %>
+<%= render :partial => 'spree/shared/error_messages', locals: { target: @rgpd } %>
 
-<% admin_breadcrumb(Spree.t(:settings)) %>
-<% admin_breadcrumb(Spree.t(:general_settings)) %>
-<% admin_breadcrumb(Spree.t(:configuration_rgpd)) %>
-<% admin_breadcrumb(Spree.t(:rgpd_translations)) %>
-
+<% content_for :page_title do %>
+  <%= Spree.t(:rgpd_translations) %>
+<% end %>
 
 <% content_for :page_actions do %>
 	<li>
-    <%= button_link_to Spree.t(:back_to_rgpd_list),  spree.admin_rgpds_path, :id => 'admin_edit_rgpd_link' %>
+    <%= button_link_to Spree.t(:back_to_rgpd_list),  spree.admin_rgpds_path, :id => 'admin_edit_rgpd_link', icon: 'arrow-left' %>
   </li>
 <% end %>
 

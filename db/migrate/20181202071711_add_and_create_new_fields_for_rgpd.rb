@@ -1,4 +1,4 @@
-class AddAndCreateNewFieldsForRgpd < SolidusSupport::Migration[4.2]
+class AddAndCreateNewFieldsForRgpd < ActiveRecord::Migration
   def self.up
     create_table :spree_rgpds do |t|
       t.string :link_to_terms_and_conditions
