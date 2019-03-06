@@ -52,9 +52,8 @@
     </tbody>
   </table>
 <% else %>
-  <div class="no-objects-found">
-    <%#= render 'spree/admin/shared/no_objects_found',
-                 resource: Spree::Rgpd,
-                 new_resource_url: new_object_url %>
+      <div class="alpha twelve columns no-objects-found">
+    <%= Spree.t(:no_resource_found, resource: @rgpd) %>,
+    <%= link_to Spree.t(:add_one), spree.new_admin_rgpd_path %>!
   </div>
 <% end %>
