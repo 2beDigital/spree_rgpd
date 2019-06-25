@@ -2,8 +2,8 @@ class AddAndCreateNewFieldsForRgpd < ActiveRecord::Migration
   def self.up
     create_table :spree_rgpds do |t|
       t.string :link_to_terms_and_conditions
-      t.string :terms_and_conditions_text
-      t.string :accept_comunications_text
+      t.text :terms_and_conditions_text
+      t.text :accept_comunications_text
       t.string :link_text
       t.references :store
       t.timestamps
